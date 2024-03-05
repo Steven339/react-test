@@ -1,10 +1,22 @@
 import { Box, Button, Modal, TextField } from "@mui/material";
 import { useState } from "react";
+import {addProducts} from "../services/Porducts.service";
 
 export const AddProducts = () => {
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
+
+	const handleSave = () => {
+		const product = {
+			name: "test",
+			price: 10,
+			priceWithDiscount: 10,
+			discountType: "percentage",
+			stock: 10
+		}
+		addProducts(product);
+	}
 	return (
 		<div>
 			<Button variant="text" onClick={handleOpen}>Agregar producto</Button>
@@ -22,7 +34,7 @@ export const AddProducts = () => {
 					<TextField id="outlined-basic" label="Tipo de descuento" variant="outlined" />
 					<TextField id="outlined-basic" label="Cantidad" variant="outlined" />
 					<Button variant="text" onClick={handleClose}>Cancelar</Button>
-					<Button variant="contained" onClick={handleClose}>Guardar</Button>
+					<Button variant="contained" onClick={handleSave}>Guardar</Button>
 				</Box>
 			</Modal>
 		</div>

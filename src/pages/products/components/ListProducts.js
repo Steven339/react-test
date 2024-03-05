@@ -3,28 +3,32 @@ import DataTable from 'react-data-table-component';
 
 const columns = [
 	{
-		name: 'Title',
-		selector: row => row.title,
+		name: 'ID',
+		selector: row => row.id,
 	},
 	{
-		name: 'Year',
-		selector: row => row.year,
+		name: 'Nombre',
+		selector: row => row.name,
 	},
+	{
+		name: 'Precio',
+		selector: row => row.price,
+	},
+	{
+		name: 'Precio con descuento',
+		selector: row => row.priceWithDiscount,
+	},
+	{
+		name: 'Tipo de descuento',
+		selector: row => row.discountType,
+	},
+	{
+		name: 'Stock',
+		selector: row => row.stock,
+	}
 ];
 
-const data = [
-	{
-		id: 1,
-		title: 'Beetlejuice',
-		year: '1988',
-	},
-	{
-		id: 2,
-		title: 'Ghostbusters',
-		year: '1984',
-	},
-]
-export const ListProducts = () => {
+export const ListProducts = ({ data }) => {
 	return (
 		<DataTable
 			columns={columns}
