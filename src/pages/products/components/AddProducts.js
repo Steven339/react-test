@@ -2,7 +2,7 @@ import { Box, Button, Modal, TextField } from "@mui/material";
 import { useState } from "react";
 import { addProducts } from "../services/Porducts.service";
 
-export const AddProducts = () => {
+export const AddProducts = ({ onClose }) => {
 	const [open, setOpen] = useState(false);
 	const [name, setName] = useState("");
 	const [price, setPrice] = useState("");
@@ -11,7 +11,10 @@ export const AddProducts = () => {
 	const [stock, setStock] = useState("");
 	
 	const handleOpen = () => setOpen(true);
-	const handleClose = () => setOpen(false);
+	const handleClose = () => {
+		setOpen(false);
+		onClose();
+	};
 	
 	const handleSave = () => {
 		const product = {

@@ -6,19 +6,22 @@ import "./Products.css";
 
 export const Products = () => {
 	const [products, setProducts] = useState([]);
-
+	
 	useEffect(() => {
+		loadProducts();
+	}, []);
+	
+	const loadProducts = () => {
 		getProducts().then((products) => {
 			setProducts(products);
 		});
-	}, []);
-
+	}
 	return (
 		<>
 			<div className={"products-container"}>
 				<h1>List Products</h1>
 				<ListProducts data={products} />
-				<AddProducts></AddProducts>
+				<AddProducts onClose={loadProducts} />
 			</div>
 		</>
 	)
